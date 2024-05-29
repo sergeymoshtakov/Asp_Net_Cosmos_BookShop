@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BookShop.Models.Author>
+
+@{
+    ViewData["Title"] = "Authors and their Books";
+}
+
+<h1>Authors and their Books</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Books</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>
+                    <h4>@author.Name @author.Surname</h4>
+                    <p>@author.Description</p>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var book in author.Books)
+                        {
+                            <li>
+                                <strong>@book.Name</strong> - $@book.Price
+                                <br />
+                                <em>@book.Decription</em>
+                            </li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
